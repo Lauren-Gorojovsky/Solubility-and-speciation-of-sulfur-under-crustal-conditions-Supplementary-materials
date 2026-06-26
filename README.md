@@ -87,6 +87,19 @@ Alternatively, open `S2_LASSO_regression.qmd` in RStudio or another Quarto-capab
 quarto render S2_LASSO_regression.qmd
 ```
 
+## Rendering with GitHub Actions
+
+This repository includes a GitHub Actions workflow at `.github/workflows/quarto-render.yml`. When pushed to GitHub, the workflow installs Quarto and the required R packages, renders `S2_LASSO_regression.qmd`, and deploys the rendered HTML through GitHub Pages.
+
+To enable it on GitHub:
+
+1. Open the repository on GitHub.
+2. Go to `Settings > Pages`.
+3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+4. Push changes to the `main` branch, or run `Render Quarto notebook` manually from the `Actions` tab.
+
+After the workflow succeeds, the rendered notebook will be available from the repository's GitHub Pages site.
+
 ## Analysis overview
 
 The script performs the following steps:
