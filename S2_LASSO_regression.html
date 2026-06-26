@@ -8,7 +8,7 @@
 
 <meta name="author" content="L. R. Gorojovsky">
 
-<title>LASSO regression and uncertainty estimates for sulfur capacity</title>
+<title>LASSO regression and uncertainty estimates for fitting sulfur capacities</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,8 +99,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">LASSO regression and uncertainty estimates for sulfur capacity</h1>
-<p class="subtitle lead">Supplementary notebook for Gorojovsky and Wood (2026)</p>
+<h1 class="title">LASSO regression and uncertainty estimates for fitting sulfur capacities</h1>
+<p class="subtitle lead">Supplementary material for Gorojovsky and Wood (2026)</p>
 </div>
 
 
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This notebook accompanies the supplementary R project for:</p>
-<p><strong>Gorojovsky, L. R. and Wood, B. J. (2026). Solubility and speciation of sulfur in silicate melts under crustal conditions. Earth and Planetary Science Letters.</strong></p>
+<p><strong>Gorojovsky, L. R. and Wood, B. J. (2026). Solubility and speciation of sulfur in silicate melts under crustal conditions. Earth and Planetary Science Letters. 687(120088) DOI: https://doi.org/10.1016/j.epsl.2026.120088</strong></p>
 <p>It reproduces the LASSO regression workflow used to fit sulfide and sulfate capacity models, estimate prediction intervals, and propagate uncertainty into an example sulfur-speciation calculation. The standalone R script, <code>S2_LASSO_regression.R</code>, remains the canonical script version of the same workflow.</p>
 <section id="setup" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Setup</h1>
@@ -208,7 +208,7 @@ Attaching package: 'dplyr'</code></pre>
 </section>
 <section id="data-import" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Data Import</h1>
-<p>The calibration data are read from <code>S1_Calibration_data_and_fitting_results.xlsx</code>. The fitted model form is:</p>
+<p>The calibration data are read from <code>S1_Calibration_data_and_fitting_results.xlsx</code>. Data used in the fitting are experimental data from Gorojovky &amp; Wood (2026), O’Neill &amp; Mavrogenes (2002), O’Neill and Mavrgoenes (2022), Boulliung &amp; Wood (2022), and Boulliung &amp; Wood (2023). The fitted model form is:</p>
 <p><code>logCS = A0 + B/T + sum(XA/T)</code></p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -273,7 +273,7 @@ Attaching package: 'dplyr'</code></pre>
 <section id="repeated-cross-validation" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Repeated Cross-Validation</h1>
 <p>The models are fit with LASSO regression using <code>glmnet</code>. Repeated Monte Carlo cross-validation summarizes the selected <code>lambda.1se</code> value and the distribution of selected coefficients.</p>
-<p>The publication workflow uses <code>B_reps &lt;- 100</code> and <code>nfolds &lt;- 20</code>. For a quick local smoke test, reduce <code>B_reps</code>, then restore it before reproducing the supplementary results.</p>
+<p>The publication workflow uses <code>B_reps &lt;- 100</code> and <code>nfolds &lt;- 20</code>. Set.seed fixes the random generator sequence so that results can be reproduced each time the code is run.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
