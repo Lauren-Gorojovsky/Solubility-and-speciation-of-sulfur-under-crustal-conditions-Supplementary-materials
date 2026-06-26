@@ -1,6 +1,6 @@
 ---
 title: "LASSO regression and uncertainty estimates for fitting sulfur capacities"
-subtitle: "Supplementary material for Gorojovsky and Wood (2026)"
+subtitle: "Supplementary material for Gorojovsky and Wood (2026), Solubility and speciation of sulfur in silicate melts under crustal conditions, EPSL"
 author: "L. R. Gorojovsky"
 format:
   html:
@@ -82,7 +82,6 @@ invisible(lapply(required_packages, library, character.only = TRUE))
 # Data Import
 
 The calibration data are read from `S1_Calibration_data_and_fitting_results.xlsx`. Data used in the fitting are experimental data from Gorojovky & Wood (2026), O'Neill & Mavrogenes (2002), O'Neill and Mavrgoenes (2022), Boulliung & Wood (2022), and Boulliung & Wood (2023). The fitted model form is:
-
 `logCS = A0 + B/T + sum(XA/T)`
 
 ```{r}
