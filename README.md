@@ -1,4 +1,4 @@
-# Sulfur solubility and speciation under crustal conditions
+# Solubility and speciation of sulfur under crustal conditions
 
 This repository contains the supplementary R project for:
 
