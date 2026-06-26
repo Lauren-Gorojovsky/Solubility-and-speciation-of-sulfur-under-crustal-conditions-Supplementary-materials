@@ -49,6 +49,8 @@ jobs:
             "patchwork",
             "ggprism",
             "scales",
+            "knitr",
+            "rmarkdown",
             "remotes"
           ))
 
