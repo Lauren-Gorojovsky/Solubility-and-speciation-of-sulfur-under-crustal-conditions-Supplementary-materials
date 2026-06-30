@@ -23,7 +23,23 @@ It reproduces the LASSO regression workflow used to fit sulfide and sulfate capa
 
 # Setup
 
-Install the required packages before running the notebook. Most packages are available from CRAN:
+If you only want to read through the analysis, no setup is needed: this rendered notebook can be viewed in a web browser.
+
+If you would like to run the analysis yourself, the easiest route is to use RStudio. No previous coding experience is needed, but you will need to install R, install RStudio, download this repository, and install the R packages used below.
+
+## First-time setup for beginners
+
+1. Install R from [CRAN](https://cran.r-project.org/). R is the statistical programming language that runs the analysis.
+2. Install RStudio Desktop from [Posit](https://posit.co/download/rstudio-desktop/). RStudio is a point-and-click program that makes it much easier to work with R scripts and notebooks.
+3. Download this repository from GitHub. If you are using the GitHub website, click `Code`, then `Download ZIP`, and unzip the folder on your computer.
+4. Open `Supplementary_Files.Rproj`. This opens the project in RStudio and sets the working folder correctly.
+5. Open `S2_LASSO_regression.qmd` in RStudio.
+6. Install the required packages using the commands below. You only need to do this once on a given computer.
+7. Run the notebook chunks in order, or open `S2_LASSO_regression.R` and run the script from top to bottom.
+
+In RStudio, commands can be copied into the `Console` pane and run by pressing `Enter`. Notebook chunks can be run with the small green play button at the top-right of each code block.
+
+Most required packages are available from CRAN:
 
 ```{r}
 #| eval: false
@@ -39,7 +55,7 @@ install.packages(c(
 ))
 ```
 
-The `conformalInference` package is installed from GitHub:
+The `conformalInference` package is installed from GitHub. If R asks whether to update other packages during this step, choosing "No" is usually fine for simply running this notebook.
 
 ```{r}
 #| eval: false
@@ -50,7 +66,7 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 devtools::install_github("ryantibs/conformal", subdir = "conformalInference")
 ```
 
-Load the packages used in the analysis.
+After the packages are installed, the following chunk loads them for the analysis.
 
 ```{r}
 required_packages <- c(
@@ -81,7 +97,7 @@ invisible(lapply(required_packages, library, character.only = TRUE))
 
 # Data Import
 
-The calibration data are read from `S1_Calibration_data_and_fitting_results.xlsx`. Data used in the fitting are experimental data from Gorojovky & Wood (2026), O'Neill & Mavrogenes (2002), O'Neill and Mavrgoenes (2022), Boulliung & Wood (2022), and Boulliung & Wood (2023). The fitted model form is:
+The calibration data are read from `S1_Calibration_data_and_fitting_results.xlsx`. Data used in the fitting are experimental data from Gorojovsky & Wood (2026), O'Neill & Mavrogenes (2002), O'Neill and Mavrogenes (2022), Boulliung & Wood (2022), and Boulliung & Wood (2023). The fitted model form is:
 `logCS = A0 + B/T + sum(XA/T)`
 
 ```{r}
